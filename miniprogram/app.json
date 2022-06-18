@@ -1,21 +1,12 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/getOpenId/index",
-    "pages/getMiniProgramCode/index",
-    "pages/deployService/index",
-    "pages/createCollection/index",
-    "pages/uploadFile/index",
-    "pages/selectRecord/index",
-    "pages/updateRecord/index",
-    "pages/updateRecordResult/index",
-    "pages/updateRecordSuccess/index",
-    "pages/sumRecord/index",
-    "pages/sumRecordResult/index",
     "pages/logs/logs",
     "pages/01/01",
     "pages/edit/edit",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/display/display",
+    "pages/submit/submit"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -36,13 +27,13 @@
         "selectedIconPath": "images/首页.png"
       },
       {
-        "pagePath": "pages/edit/edit",
+        "pagePath": "pages/submit/submit",
         "text": "编辑",
         "iconPath": "images/编辑.png",
         "selectedIconPath": "images/编辑.png"
       },
       {
-        "pagePath": "pages/user/user",
+        "pagePath": "pages/display/display",
         "text": "我的",
         "iconPath": "images/用户.png",
         "selectedIconPath": "images/用户.png"

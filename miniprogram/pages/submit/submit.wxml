@@ -1,0 +1,12 @@
+<!--pages/submit/submit.wxml-->
+
+<view class="container">
+  <span></span>
+  
+<form bindsubmit="formSubmit">
+  <input class="text" name="textarea" placeholder="Write Something here..."/>
+  <button id = "info" form-type="submit" class="box-button" data-text="Send" style="position: relative; left: 0rpx; top: 455rpx">Send</button>
+</form>
+
+</view>
+

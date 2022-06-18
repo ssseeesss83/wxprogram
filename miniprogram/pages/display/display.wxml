@@ -1,0 +1,17 @@
+<!--pages/display/display.wxml-->
+<view class="title">
+        <view class="bigtitle">
+            <h1 data-spotlight="SssEEEssS?" style="position: relative; left: 0rpx; top: -8rpx">SssEEEssS</h1>
+        </view>
+</view>
+<view class="container">
+        <view wx:for="{{dataObj}}" ws:key="{{item.random}}" class="box">
+          <span></span>
+          <view class="content">
+            <h2>{{item.random}}:</h2>
+            <text>\n{{item.content}}</text>
+            <text style="font-size: 0.8rem;">\n——{{item.time}}</text>
+          </view>
+        </view>
+        
+    </view>

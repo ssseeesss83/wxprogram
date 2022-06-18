@@ -1,0 +1,351 @@
+/* pages/display/display.wxss */
+view{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: consolas;
+}
+
+page{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  min-height: 100vh;
+}
+
+.bg{
+  width: 100%;
+  height: 100%;
+  background:url( "./images/bg.jpg") no-repeat;
+  top: 0;
+  filter: blur(20rpx);
+  background-size: cover;
+  position: absolute;
+  z-index: -20;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 40rpx 50rpx;
+}
+
+.container .box{
+  position: relative;
+  width: 520rpx;
+  height: 400rpx;
+  align-items: center;
+  margin: 40rpx 30rpx;
+}
+
+.container .box::before{
+  content: "";
+  position:absolute;
+  top: 0;
+  left: 50rpx;
+  width: 50%;
+  height: 100%;
+  background-color: #FFF;
+  border-radius: 8rpx;
+  transform: skewX(15deg);
+  transition: 0.5s;
+}
+
+.container .box:hover::before,
+.container .box:hover::after
+{
+  transform: skewX(0deg);
+  left: 20rpx;
+  width: calc(100% - 30rpx);
+}
+
+.container .box::before{
+  content: "";
+  position:absolute;
+  top: 0;
+  left: 50rpx;
+  width: 50%;
+  height: 100%;
+  background-color: #FFF;
+  border-radius: 8rpx;
+  transform: skewX(15deg);
+  transition: 0.5s;
+  background-image: linear-gradient(315deg,#444444,#000000);
+}
+
+.container .box::after{
+  content: "";
+  position:absolute;
+  top: 0;
+  left: 50rpx;
+  width: 50%;
+  height: 100%;
+  background-color: #FFF;
+  border-radius: 8rpx;
+  transform: skewX(15deg);
+  filter: blur(30rpx);
+  transition: 0.5s;
+  background-image: linear-gradient(315deg,#444444,#000000);
+}
+
+/* .container .box:nth-child(1)::before,
+.container .box:nth-child(1)::after{
+  background-image: linear-gradient(315deg,#00bbff,#ffd900);
+
+}
+
+.container .box:nth-child(2)::before,
+.container .box:nth-child(2)::after{
+  background-image: linear-gradient(315deg,#d9ff00,#dd00ff);
+  
+}
+
+.container .box:nth-child(3)::before,
+.container .box:nth-child(3)::after{
+  background-image: linear-gradient(315deg,#ff0707,#0077ff);
+  
+} */
+
+.container .box span{
+  display:block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.container .box span::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8rpx;
+  background-color: rgba(255,255,255,0.1);
+  opacity: 0;
+  transition: 0.5s;
+  animation: animate 2s ease-in-out infinite;
+}
+
+.container .box:hover span::before{
+  top: -50rpx;
+  left: 50rpx;
+  width: 100rpx;
+  height: 100rpx;
+  opacity: 1;
+}
+@keyframes animate{
+  0%,
+  100%{
+      transform: translateY(50rpx);
+  }
+  50%{
+      transform: translateX(-50rpx);
+  }
+}
+
+.container .box span::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8rpx;
+  background-color: rgba(255,255,255,0.1);
+  opacity: 0;
+  transition: 0.5s;
+  animation: animate 2s ease-in-out infinite;
+  animation-delay: -1s;
+}
+
+.container .box:hover span::after{
+  bottom: -50rpx;
+  right: 50rpx;
+  width: 100rpx;
+  height: 100rpx;
+  opacity: 1;
+}
+
+.container .box .content{
+  z-index: 1;
+  display: block;
+  position: relative;
+  left: 0;
+  color: #FFF;
+  padding: 20rpx 40rpx;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 8rpx;
+  box-shadow: 0 5rpx 15rpx rgba(0,0,0,0.1);
+  backdrop-filter: blur(10rpx);
+  transition: 0.5s;
+}
+
+.container .box:hover .content{
+  left: 0rpx;
+  padding: 30rpx 20rpx;
+}
+
+.container .box .content h2{
+  font-size: 1.4em;
+  color: #fff;
+  margin-bottom: 10rpx;
+}
+
+.container .box .content p{
+  font-size: 1em;
+  margin-bottom: 10rpx;
+  line-height: 1.5em;
+}
+
+.bigtitle{
+  justify-content: center;
+  align-items: center;
+}
+
+.bigtitle h1{
+  top:0;
+  color:#333;
+  font-family: sans-serif;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-size: 3rem;
+  letter-spacing: -0.3rem;
+}
+
+.bigtitle h1::after{
+  content: attr(data-spotlight);
+  color: yellow;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-clip-path: ellipse(100rpx 100rpx at 0% 50%);
+  clip-path: ellipse(100rpx 100rpx at 0% 50%);
+  animation: spotlight 5s infinite;
+}
+
+@keyframes spotlight{
+  0%{
+      -webkit-clip-path: ellipse(100rpx 100rpx at 0% 50%);
+      clip-path: ellipse(100rpx 100rpx at 0% 50%);
+  }
+  50%{
+      -webkit-clip-path: ellipse(100rpx 100rpx at 100% 50%);
+      clip-path: ellipse(100rpx 100rpx at 100% 50%);
+  }
+  100%{
+      -webkit-clip-path: ellipse(100rpx 100rpx at 0% 50%);
+      clip-path: ellipse(100rpx 100rpx at 0% 50%);
+  }
+}
+
+.three{
+  left: 0;
+  top:900rpx;
+  position: absolute;
+
+}
+
+
+#info .glitch{
+  z-index: 50;
+  color: rgba(255,255,255,0.8);
+  font-size: 70rpx;
+  left: 10%;
+  margin-top: 100rpx;
+  overflow: visible;
+  position: absolute;
+  letter-spacing: 10rpx;
+}
+
+#info .glitch::before{
+  content: attr(data-text);
+  position: absolute;
+  text-shadow: 10rpx 0 rgb(255, 0, 0);
+  left: -4rpx;
+  clip-path: inset(50rpx 0 0 0);
+  animation: gli 0.3s infinite linear alternate-reverse;
+  /* background-color: black; */
+}
+
+#info .glitch::after{
+  content: attr(data-text);
+  position: absolute;
+  text-shadow: -10rpx 0 rgb(0, 204, 255);
+  right: 4rpx;
+  animation: gli 0.3s infinite linear alternate-reverse;
+  clip-path: inset(-50rpx 50rpx 0 0);
+  animation-delay: 0.17s;
+  /* background-color: black; */
+}
+
+@keyframes gli{
+  0%{
+      clip-path: inset(-70rpx 31rpx -40rpx 75rpx);
+      transform:scaleX(0.4);
+      transform:scaleY(1.5);
+  }
+  25%{
+      clip-path: inset(30rpx -68rpx 95rpx -23rpx);
+      transform:scaleX(0.4);
+      transform:scaleY(0.5);
+  }
+  50%{
+      clip-path: inset(-75rpx 21rpx 31rpx 70rpx);
+      transform:scaleX(1.7);
+      transform:scaleY(1.4);
+  }
+  75%{
+      clip-path: inset(-20rpx -85rpx 81rpx 31rpx);
+      transform:scaleX(0.5);
+      transform:scaleY(0.3);
+  }
+  100%{
+      clip-path: inset(84rpx 25rpx -23rpx -81rpx);
+      transform:scaleX(1);
+      transform:scaleY(1.4);
+  }
+}
+
+#video{
+  top: 0;
+  position: absolute;
+  z-index: -10;
+}
+
+#video::after{
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top:0;
+  right:0;
+  box-shadow: 0 0 150rpx 150rpx black inset;
+}
+
+.gallery{
+  top:0%;
+  position: absolute;
+  margin-top: 220%;
+  bottom: 0%;
+  z-index: -20;
+}
+
+
+.gallery::after{
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top:0;
+  right:0;
+  box-shadow: 0 0 150rpx 350rpx black inset;
+}
