@@ -15,7 +15,7 @@
     <h1 style="font-size: 2rem;">+</h1>
   </view>
   <view style="position: relative;left: 80%;">
-    <h1 style="color: white;font-size: 2rem;" bindtap='deleteimg'>×</h1>
+    <h1 style="color: white;font-size: 1.5rem;" bindtap='deleteimg'>×</h1>
   </view>
 
 

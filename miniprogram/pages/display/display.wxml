@@ -5,8 +5,9 @@
         </view>
 </view>
 
-<view class="refresh" style="position: fixed;right: 5%; bottom: 5%;width: 4rem;height: 4rem;z-index: 120;background-color: rgba(255,255, 255, 0.1);border-radius: 50%;text-align:center; align-items:center; justify-content: center; margin: auto;" bindtap="refresh">
-<h2 class='refresh' style="position:relative;font-size: 2rem;">↻</h2>
+<view class="refresh" style="position: fixed;right: 5%; bottom: 5%;width: 4rem;height: 4rem;z-index: 120;background-color: rgba(255,255, 255, 0.1);border-radius: 50%;text-align:center; align-items:center; justify-content: center; margin: auto;display: flex;flex-direction: column;line-height: 3rem;" bindtap="refresh">
+<text style="color: white;font-size: 3rem;">↻</text>
+<!-- <h2 class='refresh' style="position:relative;">↻</h2> -->
 </view>
 
 <view class="container">
