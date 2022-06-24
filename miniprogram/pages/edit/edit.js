@@ -50,7 +50,7 @@ Page({
   /**
    * 添加图片
    */
-  addImg: function () {
+  addimg: function () {
     var that = this;
     //这里考虑到性能，对于图片张数做了限制
     if (that.data.dataList.length >= 4) {//超过四张

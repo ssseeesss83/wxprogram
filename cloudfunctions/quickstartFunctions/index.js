@@ -8,5 +8,7 @@ exports.main = async (event, context) => {
       return await getOpenId.main(event, context);
     case 'checkContent':
       return await checkContent.main(event,context);
+    case 'getUser':
+      return await getUser.main(event,context);
   }
 };

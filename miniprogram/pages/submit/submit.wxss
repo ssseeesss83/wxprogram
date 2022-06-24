@@ -16,8 +16,6 @@ page{
   background-color: rgba(255, 255, 255, 0.1);
   color: white;
   position: relative;
-  width: 520rpx;
-  height: 400rpx;
   align-items: center;
   margin: 40rpx 30rpx;
   border-radius: 8rpx;
@@ -26,6 +24,10 @@ page{
 .container.text{
   color: white;
   font-family: consolas;
+  padding: 10%;
+  height: auto;
+  word-break: break-all;
+  white-space: pre-line;
 }
 
 .container span{
@@ -93,74 +95,8 @@ page{
 }
 
 .box-button{
-  border-radius: 8rpx;
+  border-radius: 50%;
   background-color: rgba(255,255,255,0.1);
   color: white;
   font-size: 2rem;
-}
-
-#info .glitch{
-  z-index: 50;
-  color: rgba(255,255,255,0.8);
-  font-size: 70rpx;
-  left: 10%;
-  margin-top: 100rpx;
-  overflow: visible;
-  position: absolute;
-  letter-spacing: 10rpx;
-  font-family: consolas;
-}
-
-#info:hover .glitch::before{
-  content: attr(data-text);
-  font-family: consolas;
-  position: absolute;
-  text-shadow: 10rpx 0 rgb(255, 0, 0);
-
-  clip-path: inset(50rpx 0 0 0);
-  animation: gli 0.3s infinite linear alternate-reverse;
-  /* background-color: black; */
-}
-
-#info:hover .glitch::after{
-  content: attr(data-text);
-  position: absolute;
-  text-shadow: -10rpx 0 rgb(0, 204, 255);
-
-  animation: gli 0.3s infinite linear alternate-reverse;
-  clip-path: inset(-50rpx 50rpx 0 0);
-  animation-delay: 0.17s;
-  /* background-color: black; */
-}
-
-#info .glitch:active{
-  background-color: black;
-}
-
-@keyframes gli{
-  0%{
-      clip-path: inset(-70rpx 31rpx -40rpx 75rpx);
-      transform:scaleX(0.4);
-      transform:scaleY(1.5);
-  }
-  25%{
-      clip-path: inset(30rpx -68rpx 95rpx -23rpx);
-      transform:scaleX(0.4);
-      transform:scaleY(0.5);
-  }
-  50%{
-      clip-path: inset(-75rpx 21rpx 31rpx 70rpx);
-      transform:scaleX(1.7);
-      transform:scaleY(1.4);
-  }
-  75%{
-      clip-path: inset(-20rpx -85rpx 81rpx 31rpx);
-      transform:scaleX(0.5);
-      transform:scaleY(0.3);
-  }
-  100%{
-      clip-path: inset(84rpx 25rpx -23rpx -81rpx);
-      transform:scaleX(1);
-      transform:scaleY(1.4);
-  }
 }

@@ -6,10 +6,50 @@ Page({
    * 页面的初始数据
    */
   data: {
-    dataObj:""
+    dataObj:"",
+    localimg:"",
+    inputvalue:""
+  },
+
+  addimg(){
+    var that = this
+    wx.showActionSheet({
+      itemList: ['从相册选择', '拍照'],
+      itemColor: '#ef8383',
+      success: function (res) {
+        var choseType = res.tapIndex == 0 ? "album" : res.tapIndex == 1 ? "camera":"";
+        if (choseType != "") {
+          wx.chooseImage({
+            sizeType: ['original'],//原图
+            sourceType: [choseType],
+            count: 1,//每次添加一张
+            success: function (res) {
+              var info = {
+                pic: res.tempFilePaths[0],//存储本地地址
+                temp: true,//标记是否是临时图片
+              }
+              that.setData({
+                localimg:info.pic,
+              })
+              console.log(that.data.localimg)
+            }
+          })
+        }
+      },
+      fail: function (res) {
+        console.log(res.errMsg)
+      }
+    })
+  },
+
+  deleteimg(){
+    this.setData({
+      localimg:''
+    })
   },
 
   formSubmit(e){
+    var that = this
     console.log(e)
     var date = new Date();
     var year = date.getFullYear();
@@ -17,38 +57,106 @@ Page({
     var day = date.getDate();
     var hour = date.getHours();
     var time = year+"-"+month+"-"+day+"-"+hour+"时";
-    var random = Math.floor(Math.random()*89999+10000)
+    var random = Math.floor(Math.random()*899999+100000)
+    var nickname
     var text = e.detail.value.textarea;
-    wx.cloud.callFunction({
-      name:'contentCheck',
-      data:{
-        text:text
-      },
-      success(res){
-        if(res.result.errCode!=1){
-          db.collection("AllMessage").add({
-            data:{
-              random:random,
-              time:time,
-              content:text
-            }
-          })
-          wx.showToast({
-            title: 'Send Success',
-            icon:"success"
-          });
-        }else{
+    var id
+    var hasimg = false
+    var imgsrc
+    if(this.data.localimg!=''){
+      hasimg = true
+    }
+    console.log(hasimg)
+    if(hasimg){
+      let path = 'userimg/' + random + '.jpg'
+      wx.cloud.uploadFile({
+        cloudPath:path,
+        filePath:that.data.localimg,
+      }).then(res => {
+        imgsrc = res.fileID
+        console.log(res.fileID)
+      }).then(result =>{
+        wx.cloud.callFunction({
+          name:'getUser',
+          success: res =>{
+            id = res.result.openid
+            console.log(id)
+            db.collection("User").where({
+              _openid:id,
+            }).get({
+              success: res2=>{
+                nickname = res2.data[0].name
+                console.log(res2.data[0].name)
+                console.log(nickname)
+    
+                db.collection("AllMessage").add({
+                  data:{
+                    name:nickname,
+                    random:random,
+                    time:time,
+                    content:text,
+                    hasimg:hasimg,
+                    imgid:imgsrc,
+                    comment:[],
+                    commentcount:0,
+                  }
+                })
+                wx.showToast({
+                  title: 'Send Success',
+                  icon:"success"
+                });
+              },
+              fail: res2=>{
+                console.log(res2)
+              }
+            })
+          }
+        })
+      })
+    }else{
 
-        }
-      },
-      fail(err){
-        console.log(err);
-        wx.showToast({
-          title: 'Error',
-          icon:'error'
-        });
+
+    wx.cloud.callFunction({
+      name:'getUser',
+      success: res =>{
+        id = res.result.openid
+        console.log(id)
+        db.collection("User").where({
+          _openid:id,
+        }).get({
+          success: res2=>{
+            nickname = res2.data[0].name
+            console.log(res2.data[0].name)
+            console.log(nickname)
+
+            db.collection("AllMessage").add({
+              data:{
+                name:nickname,
+                random:random,
+                time:time,
+                content:text,
+                hasimg:hasimg,
+                comment:[],
+                commentcount:0,
+              }
+            })
+            wx.showToast({
+              title: 'Send Success',
+              icon:"success"
+            });
+          },
+          fail: res2=>{
+            console.log(res2)
+          }
+        })
       }
     })
+  }
+
+  this.setData({
+    inputvalue:"",
+    localimg:""
+  })
   },
   /**
    * 生命周期函数--监听页面加载

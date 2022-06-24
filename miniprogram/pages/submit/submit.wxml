@@ -3,10 +3,24 @@
 <view class="container">
   <span></span>
   
-<form bindsubmit="formSubmit">
-  <input class="text" name="textarea" placeholder="Write Something here..."/>
-  <button id = "info" form-type="submit" class="box-button" data-text="Send" style="position: relative; left: 0rpx; top: 455rpx">Send</button>
+<form bindsubmit="formSubmit" style="width: 666rpx; height: 303rpx; display: block; box-sizing: border-box">
+  <textarea style="width: 514rpx; height: 305rpx; display: block; box-sizing: border-box; left: 97rpx; top: 10rpx"  class="text" name="textarea" placeholder="Write Something here..." value="{{inputvalue}}"></textarea>
+  <button id = "info" form-type="submit" class="box-button" data-text="Send" style="position: fixed; width: 240rpx; height: 240rpx; display: block; box-sizing: border-box; z-index: 100; left: 257rpx; bottom: 10rpx;font-size: 3.5rem;">⬆︎</button>
 </form>
 
 </view>
 
+<view class="container" style="width: 666rpx; height: 101rpx; display: flex; box-sizing: border-box; left: 0rpx; top: 0rpx;flex-direction: row;">
+  <view class='toWrite' style="position: relative;left: 10%;" bindtap='addimg'>
+    <h1 style="font-size: 2rem;">+</h1>
+  </view>
+  <view style="position: relative;left: 80%;">
+    <h1 style="color: white;font-size: 2rem;" bindtap='deleteimg'>×</h1>
+  </view>
+
+
+
+</view>
+<view style="padding-left: 10%;padding-right: 10%;height: auto;">
+    <image src='{{localimg}}' style="z-index: -20; width: 666rpx; height: 474rpx; display: inline-block; box-sizing: border-box;border-radius: 8rpx;" mode="aspectFill"></image>
+</view>

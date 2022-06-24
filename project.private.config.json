@@ -47,9 +47,17 @@
           "scene": null
         },
         {
-          "name": "pages/updateRecordSuccess/index",
-          "pathName": "pages/updateRecordSuccess/index",
+          "name": "",
+          "pathName": "pages/user/user",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "DEFAULT",
+          "pathName": "pages/user/user",
+          "query": "",
+          "launchMode": "default",
           "scene": null
         }
       ]

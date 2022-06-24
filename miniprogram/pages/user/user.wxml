@@ -1,2 +1,28 @@
 <!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view class="bg">
+<image src="https://6261-base-0g1fzyh0954c74dc-1312474739.tcb.qcloud.la/bg.jpg?sign=cb08b3d6bdf1955b485699ed4d33800c&t=1655979368"></image>
+</view>
+<!-- <view class="info">
+  <view class="glitch" data-text="😀" style="position: absolute; left: 218rpx; top: -29rpx">😀</view>
+</view> -->
+
+<view>
+  <view class = "name" style="width: 434rpx; height: 242rpx; display: block; box-sizing: border-box;">
+  <h1 style="width: 127rpx; height: 127rpx; display: block; box-sizing: border-box; top: 329rpx; position: relative; border-radius: 50%; left: 161rpx;filter: blur(5rpx);"></h1>
+
+  <h1 style="width: 100rpx; height: 100rpx; display: block; box-sizing: border-box; top: 38rpx; position: relative; border-radius: 50%; animation-delay: 0.03s; left: 175rpx"></h1>
+
+
+  </view>
+
+
+  <form class="name" bindsubmit="submit">
+
+    <input  type="text" name="input" style="position: relative; top: 347rpx; left: -18rpx; text-align: center" placeholder="Username"></input>
+
+
+    <button form-type="submit" style="color: white; position: relative; left: 2rpx; top: 448rpx; background-color: rgba(1, 1 ,1, 0.1);" hover-class="button" plain="{{false}}">ENTER</button>
+
+  </form>
+
+</view>

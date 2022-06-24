@@ -1,12 +1,39 @@
 // pages/user/user.js
+const db = wx.cloud.database()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userdata:"",
+    username:'?',
   },
+
+
+  submit(e){
+    let name = e.detail.value['input']
+    console.log(name)
+    this.setData({
+      username:name,
+    })
+    if(name != ""){
+      db.collection('User').add({
+        data:{
+          name:this.data.username
+        },
+        success:res => {
+          console.log(res)
+          wx.showToast({
+            title: 'Send Success',
+            icon:"success"
+          })
+      }
+      
+    })
+  }
+},
+
 
   /**
    * 生命周期函数--监听页面加载

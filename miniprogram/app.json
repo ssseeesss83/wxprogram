@@ -1,8 +1,5 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/01/01",
     "pages/edit/edit",
     "pages/user/user",
     "pages/display/display",
@@ -21,26 +18,27 @@
     "borderStyle": "white",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "text": "首页",
+        "pagePath": "pages/user/user",
+        "text": "My",
+        "iconPath": "images/用户.png",
+        "selectedIconPath": "images/用户.png"
+      },
+      {
+        "pagePath": "pages/display/display",
+        "text": "Home",
         "iconPath": "images/首页.png",
         "selectedIconPath": "images/首页.png"
       },
       {
         "pagePath": "pages/submit/submit",
-        "text": "编辑",
+        "text": "Edit",
         "iconPath": "images/编辑.png",
         "selectedIconPath": "images/编辑.png"
-      },
-      {
-        "pagePath": "pages/display/display",
-        "text": "我的",
-        "iconPath": "images/用户.png",
-        "selectedIconPath": "images/用户.png"
       }
     ],
     "position": "bottom"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
 }
